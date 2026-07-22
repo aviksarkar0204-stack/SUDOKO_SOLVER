@@ -40,3 +40,37 @@ def find_empty(grid):
             if grid[row][col] == 0:
                 return (row, col)
     return None
+
+#print(find_empty(grid))
+
+def solve(grid):
+    empty = find_empty(grid)
+    if empty is None:
+        return True  # no empty cells left, solved!
+
+    row, col = empty
+
+    for num in range(1, 10):
+        if is_valid(grid, row, col, num):
+            grid[row][col] = num  # place it
+
+            if solve(grid):  # recursively try to solve the rest
+                return True
+
+            grid[row][col] = 0  # undo (backtrack) — didn't work out
+
+    return False  # no number worked here, trigger backtrack in caller
+
+def print_grid(grid):
+    for row in range(9):
+        if row % 3 == 0 and row != 0:
+            print("- - - - - - - - - - - -")
+
+        for col in range(9):
+            if col % 3 == 0 and col != 0:
+                print("|", end=" ")
+
+            if col == 8:
+                print(grid[row][col])
+            else:
+                print(grid[row][col], end=" ")
