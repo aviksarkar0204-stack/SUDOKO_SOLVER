@@ -31,4 +31,12 @@ def is_valid(grid, row, col, num):
 
     return True
 
-print(is_valid(grid, 0, 2, 5))
+#print(is_valid(grid, 0, 2, 5))
+#print(is_valid(grid, 0, 2, 4))
+
+def find_empty(grid):
+    for row in range(9):
+        for col in range(9):
+            if grid[row][col] == 0:
+                return (row, col)
+    return None
