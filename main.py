@@ -74,3 +74,10 @@ def print_grid(grid):
                 print(grid[row][col])
             else:
                 print(grid[row][col], end=" ")
+
+print_grid(grid)
+print("\n")
+if solve(grid):
+    print_grid(grid)
+else:
+    print("No solution exists")
